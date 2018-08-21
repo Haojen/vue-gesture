@@ -1,22 +1,23 @@
+import {DIRECTION} from './const'
 import Hammer from 'hammerjs'
 // todo 做成手势库
 export default {
   inserted(el, binding) {
-    const {swipe,} = binding.modifiers
+    const {swipe, left, right, up, down} = binding.modifiers
     const hammer = new Hammer(el)
-    const Directions =  {
-      1: 'DIRECTION_NONE',
-      2: 'DIRECTION_LEFT',
-      4: 'DIRECTION_RIGHT',
-      6: 'DIRECTION_HORIZONTAL',
-      8: 'DIRECTION_UP',
-      16: 'DIRECTION_DOWN',
-      24: 'DIRECTION_VERTICAL',
-      30: 'DIRECTION_ALL'
-    }
-    swipe&&hammer.on('swipe', ev => {
-      ev.direction = Directions[ev.direction]
-      binding.value(ev)
+
+    swipe && hammer.on('swipe', ev => {
+      if (!binding.value) return
+      ev.direction = DIRECTION[ev.direction]
+      if (!left && !right && !up && !down) {
+        binding.value(ev)
+        return
+      }
+
+      up && ev.direction === DIRECTION[8] && binding.value(ev)
+      left && ev.direction === DIRECTION[2] && binding.value(ev)
+      right && ev.direction === DIRECTION[4] && binding.value(ev)
+      down && ev.direction === DIRECTION[16] && binding.value(ev)
     })
   },
 }

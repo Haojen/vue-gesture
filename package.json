@@ -1,0 +1,28 @@
+{
+  "name": "v-gesture",
+  "version": "1.0.0",
+  "description": "support vue 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haojen/vue-gesture.git"
+  },
+  "keywords": [
+    "vue-gesture",
+    "gesture",
+    "touch",
+    "motion"
+  ],
+  "author": "haojenma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Haojen/vue-gesture/issues"
+  },
+  "homepage": "https://github.com/Haojen/vue-gesture#readme",
+  "dependencies": {
+    "hammerjs": "^2.0.8"
+  }
+}
