@@ -1,6 +1,6 @@
 import {DIRECTION} from './const'
 import Hammer from 'hammerjs'
-// todo 做成手势库
+
 export default {
   inserted(el, binding) {
     const {swipe, left, right, up, down} = binding.modifiers
