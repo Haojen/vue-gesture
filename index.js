@@ -3,10 +3,11 @@ import Hammer from 'hammerjs'
 
 export default {
   inserted(el, binding) {
+    console.log('bind gesture')
     const {swipe, left, right, up, down} = binding.modifiers
     const hammer = new Hammer(el)
 
-    swipe && hammer.on('swipe', ev => {
+    swipe && hammer.on('swipe', ev =>  {
       if (!binding.value) return
       ev.direction = DIRECTION[ev.direction]
       if (!left && !right && !up && !down) {
