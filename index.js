@@ -1,24 +1,22 @@
-import {DIRECTION} from './const'
-import Hammer from 'hammerjs'
+var Hammer = require('hammerjs')
+var DIRECTION =  require('./const')
 
-export default {
-  inserted(el, binding) {
-    console.log('bind gesture')
-    const {swipe, left, right, up, down} = binding.modifiers
-    const hammer = new Hammer(el)
+module.exports = {
+  inserted: function(el, binding) {
+    var hammer = new Hammer(el)
 
-    swipe && hammer.on('swipe', ev =>  {
+    swipe && hammer.on('swipe', function(ev){
       if (!binding.value) return
       ev.direction = DIRECTION[ev.direction]
-      if (!left && !right && !up && !down) {
+      if (!binding.modifiers.left && !binding.modifiers.right && !binding.modifiers.up && !binding.modifiers.down) {
         binding.value(ev)
         return
       }
 
-      up && ev.direction === DIRECTION[8] && binding.value(ev)
-      left && ev.direction === DIRECTION[2] && binding.value(ev)
-      right && ev.direction === DIRECTION[4] && binding.value(ev)
-      down && ev.direction === DIRECTION[16] && binding.value(ev)
+      binding.modifiers.up && ev.direction === DIRECTION[8] && binding.value(ev)
+      binding.modifiers.left && ev.direction === DIRECTION[2] && binding.value(ev)
+      binding.modifiers.right && ev.direction === DIRECTION[4] && binding.value(ev)
+      binding.modifiers.down && ev.direction === DIRECTION[16] && binding.value(ev)
     })
   },
 }

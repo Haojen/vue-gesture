@@ -1,4 +1,4 @@
-export const DIRECTION =  {
+module.exports =  {
   1: 'DIRECTION_NONE',
   2: 'DIRECTION_LEFT',
   4: 'DIRECTION_RIGHT',
