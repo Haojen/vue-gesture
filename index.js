@@ -5,7 +5,7 @@ module.exports = {
   inserted: function(el, binding) {
     var hammer = new Hammer(el)
 
-    swipe && hammer.on('swipe', function(ev){
+    binding.modifiers.swipe && hammer.on('swipe', function(ev){
       if (!binding.value) return
       ev.direction = DIRECTION[ev.direction]
       if (!binding.modifiers.left && !binding.modifiers.right && !binding.modifiers.up && !binding.modifiers.down) {
