@@ -5,6 +5,8 @@ module.exports = {
   inserted: function(el, binding) {
     var hammer = new Hammer(el)
 
+    hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
     binding.modifiers.swipe && hammer.on('swipe', function(ev){
       if (!binding.value) return
       ev.direction = DIRECTION[ev.direction]
