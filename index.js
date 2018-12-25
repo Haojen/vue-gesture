@@ -20,15 +20,19 @@ module.exports = {
       binding.modifiers.right && ev.direction === DIRECTION[4] && binding.value(ev)
       binding.modifiers.down && ev.direction === DIRECTION[16] && binding.value(ev)
     })
+
+    hammer.get('press').set({ time:500})
+
     binding.modifiers.tap && hammer.on('tap', function(ev){
       if (!binding.value) return
       binding.value(ev)
     })
-    hammer.get('press').set({ time:500});
+
     binding.modifiers.press && hammer.on('press' ,function(ev){
       if (!binding.value) return
       binding.value(ev)
     })
+
     binding.modifiers.pressup && hammer.on('pressup' ,function(ev){
       if (!binding.value) return
       binding.value(ev)
